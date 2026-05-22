@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border-color);
+  --color-border-accent: var(--border-accent);
+  --color-muted: var(--muted-text);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-badge-new-bg: var(--badge-new-bg);
+  --color-badge-new-text: var(--badge-new-text);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-text: var(--tag-text);
+  --color-tab-active-bg: var(--tab-active-bg);
+  --color-tab-active-text: var(--tab-active-text);
+  --color-filter-active-bg: var(--filter-active-bg);
+  --color-filter-active-text: var(--filter-active-text);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #f8f8f6;
+  --foreground: #1a1a1a;
+  --surface: #ffffff;
+  --surface-hover: #fafaf8;
+  --border-color: #e5e5e0;
+  --border-accent: #c5c9a8;
+  --muted-text: #7a7a72;
+  --accent: #5c6e3d;
+  --accent-soft: #8a9a6c;
+  --badge-new-bg: #e8f0dc;
+  --badge-new-text: #4a6230;
+  --tag-bg: #f0f0eb;
+  --tag-text: #3d3d38;
+  --tab-active-bg: #2c2c2c;
+  --tab-active-text: #ffffff;
+  --filter-active-bg: #dce4cf;
+  --filter-active-text: #3a4d24;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for interactive elements */
+* {
+  transition-property: background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-text);
 }
