@@ -1,38 +1,38 @@
-name: Research Jobs
+# name: Research Jobs
 
-on:
-  schedule:
-    - cron: "0 8 * * *" # Daily at 3:00 PM Thailand time (UTC+7)
-  workflow_dispatch: # Allow manual trigger from GitHub UI
+# on:
+#   schedule:
+#     - cron: "0 8 * * *" # Daily at 3:00 PM Thailand time (UTC+7)
+#   workflow_dispatch: # Allow manual trigger from GitHub UI
 
-jobs:
-  research:
-    runs-on: ubuntu-latest
+# jobs:
+#   research:
+#     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
+#     permissions:
+#       contents: write
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install google-genai
+#       - name: Install dependencies
+#         run: pip install google-genai
 
-      - name: Run job research
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scripts/research_jobs.py
+#       - name: Run job research
+#         env:
+#           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+#         run: python scripts/research_jobs.py
 
-      - name: Commit and push updated listings
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add jobs/
-          git diff --cached --quiet || git commit -m "chore: update job listings $(date +'%Y-%m-%d')"
-          git push
+#       - name: Commit and push updated listings
+#         run: |
+#           git config user.name "github-actions[bot]"
+#           git config user.email "github-actions[bot]@users.noreply.github.com"
+#           git add jobs/
+#           git diff --cached --quiet || git commit -m "chore: update job listings $(date +'%Y-%m-%d')"
+#           git push
